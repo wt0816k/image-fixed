@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>画像を固定して表示</title>
+</head>
+
+<body>
+    <input id="image-select" type="file">
+</body>
+<style>
+    html,
+    body {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: #000000;
+        color: #ffffff;
+    }
+</style>
+<script>
+    document.getElementById('image-select').addEventListener('change', function (e) {
+        var file = e.target.files[0];
+
+        var blobUrl = window.URL.createObjectURL(file);
+
+        document.getElementsByTagName('body')[0].style.backgroundImage = `url(${blobUrl})`;
+        document.getElementById('image-select').style.display = "none";
+    });
+</script>
+
+</html>
